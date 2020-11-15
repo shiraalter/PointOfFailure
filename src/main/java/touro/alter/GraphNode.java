@@ -1,6 +1,4 @@
 package touro.alter;
-
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,8 +23,10 @@ public class GraphNode {
         return connections;
     }
 
+    public String getName(){
+        return name;
+    }
 
-/*    public void setConnections(List<GraphNode> connections) {
-        this.connections = connections;
-    }*/
+
+
 }
