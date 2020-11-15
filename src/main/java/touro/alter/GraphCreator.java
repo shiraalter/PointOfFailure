@@ -11,7 +11,6 @@ public class GraphCreator {
    private List<GraphNode> nodeList = new ArrayList<>();
 
     public GraphCreator(String file){
-        //read text from file
         try {
             Scanner inputFile = new Scanner(new File(file));
             while(inputFile.hasNextLine()) {
@@ -20,7 +19,6 @@ public class GraphCreator {
                 connectNodes(input);
 
             }
-
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
@@ -29,25 +27,28 @@ public class GraphCreator {
 
     private void connectNodes(String input) {
         if (!input.contentEquals("0")) {
-           List<String> vertices = Arrays.asList(input.split(" "));
+           String vertices[] = input.split(" ");
 
-           GraphNode firstNode = new GraphNode(vertices.get(0));
-           GraphNode secondNode = new GraphNode(vertices.get(1));
+           GraphNode firstNode = new GraphNode(vertices[0]);
+           GraphNode secondNode = new GraphNode(vertices[1]);
 
-           if(!nodeList.contains(firstNode)){
+           //check that list doesn't already contain node
+           if(!containsName(nodeList, firstNode.getName())){
                nodeList.add(firstNode);
            }
 
-           if(!nodeList.contains(secondNode)){
+          if(!containsName(nodeList,secondNode.getName())){
                nodeList.add(secondNode);
            }
 
+          //BUG: not adding connection to old node already in list because created new nodes in beginning of method
            firstNode.addConnection(secondNode);
            secondNode.addConnection(firstNode);
-
         }
+
     }
 
-    
-
+    public boolean containsName(List<GraphNode> list, String name){
+        return list.stream().anyMatch(o -> o.getName().equals(name));
+    }
 }
