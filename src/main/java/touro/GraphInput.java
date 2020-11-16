@@ -37,7 +37,7 @@ public class GraphInput {
 
     /**
      * @param input - gets two nodes at a time and checks if they exist in nodeList. If not, add them to list and create connections.
-     *              If they do exist, create connections between the existing nodes in the list.
+     *              If they do exist, assign new GraphNode object to the existing node in the list and create connections between the existing nodes.
      */
     private void connectNodes(String input) {
         String[] vertices = input.split(" ");
@@ -47,23 +47,23 @@ public class GraphInput {
 
         if (nodeList.contains(node1)) {
             int index = nodeList.indexOf(node1);
-            GraphNode existingNode1 = nodeList.get(index);   //find node that exists in list
+            GraphNode existingNode1 = nodeList.get(index);   //find the node that exists in list
 
             if (nodeList.contains(node2)) {
-
                 int index2 = nodeList.indexOf(node2);
                 GraphNode existingNode2 = nodeList.get(index2);
 
+                //both nodes already exist in list, connect them
                 existingNode1.addConnection(existingNode2);
                 existingNode2.addConnection(existingNode1);
             } else {
-
                 nodeList.add(node2);
                 existingNode1.addConnection(node2);
                 node2.addConnection(existingNode1);
             }
 
-        } else {
+        }
+        else {
             nodeList.add(node1);
             if (nodeList.contains(node2)) {
                 int index2 = nodeList.indexOf(node2);
