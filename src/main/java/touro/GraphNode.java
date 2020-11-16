@@ -24,9 +24,24 @@ public class GraphNode {
         return connections;
     }
 
+    public GraphNode(GraphNode node) {
+        this.name = node.name;
+        this.connections = new ArrayList<>();
+        for (GraphNode connection : node.getConnections()) {
+            this.addConnection(connection);
+        }
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        GraphNode graphNode = (GraphNode) o;
+        return Objects.equals(name, graphNode.name);
+    }
+
     public GraphNode getNode(){
         return this;
     }
     
-
 }
