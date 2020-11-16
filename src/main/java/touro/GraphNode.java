@@ -27,13 +27,6 @@ public class GraphNode {
     public GraphNode getNode(){
         return this;
     }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        GraphNode graphNode = (GraphNode) o;
-        return Objects.equals(name, graphNode.name);
-    }
+    
 
 }
