@@ -10,7 +10,7 @@ public class GraphFrame extends JFrame {
         this.view = view;
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setTitle("Single Point of Failure");
-        setSize(800,600);
+        setSize(900,900);
         add(view);
         view.repaint();
 
