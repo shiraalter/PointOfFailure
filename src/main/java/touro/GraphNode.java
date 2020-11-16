@@ -1,6 +1,4 @@
-package touro.alter;
-
-
+package touro;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -42,7 +40,8 @@ public class GraphNode {
         return Objects.equals(name, graphNode.name);
     }
 
-/*    public void setConnections(List<GraphNode> connections) {
-        this.connections = connections;
-    }*/
+    public GraphNode getNode(){
+        return this;
+    }
+    
 }
