@@ -2,8 +2,6 @@ package touro.alter;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
-import java.util.Objects;
 
 public class GraphSearch {
     private final ArrayList<GraphNode> nodes;
@@ -51,11 +49,10 @@ public class GraphSearch {
             for (GraphNode connectedNode : remainingConnections) {
                 tempNodes.remove(connectedNode);
             }
-            remainingConnections.clear();
-            search(tempNodes.get(0), node);
+            findSPF(node);
         }
 
-        if (tempNodes.size() != nodes.size() - 1){
+        else if (tempNodes.size() != nodes.size() - 1){
             numSubnets++;
         }
 

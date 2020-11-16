@@ -42,7 +42,7 @@ public class GraphNode {
         return Objects.equals(name, graphNode.name);
     }
 
-    /*    public void setConnections(List<GraphNode> connections) {
+/*    public void setConnections(List<GraphNode> connections) {
         this.connections = connections;
     }*/
 }
