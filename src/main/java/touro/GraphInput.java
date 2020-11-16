@@ -78,7 +78,7 @@ public class GraphInput {
         }
     }
 
-    private List<List<GraphNode>> getNetList() {
+    public List<List<GraphNode>> getNetList() {
         return netList;
     }
 }
