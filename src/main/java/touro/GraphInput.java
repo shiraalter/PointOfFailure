@@ -1,4 +1,4 @@
-package touro.alter;
+package touro;
 
 import java.io.File;
 import java.io.FileNotFoundException;
