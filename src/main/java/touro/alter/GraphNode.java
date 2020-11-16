@@ -24,10 +24,6 @@ public class GraphNode {
         return connections;
     }
 
-    public String getName(){
-        return name;
-    }
-
     public GraphNode getNode(){
         return this;
     }
