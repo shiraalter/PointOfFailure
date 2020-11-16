@@ -27,6 +27,6 @@ public class GraphNode {
     public GraphNode getNode(){
         return this;
     }
-    
+
 
 }
