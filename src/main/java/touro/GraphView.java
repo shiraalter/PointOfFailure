@@ -1,4 +1,4 @@
-package touro.alter;
+package touro;
 
 import org.graalvm.compiler.graph.Graph;
 
