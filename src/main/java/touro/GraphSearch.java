@@ -13,9 +13,8 @@ public class GraphSearch {
     private int numSubnets;
 
     public HashMap<GraphNode, Integer> getPointsOfFailure(List<GraphNode> nodesList) {
-        nodes.clear();
         pointsOfFailure.clear();
-        nodes = nodesList;
+        deepCopyNodes(nodesList);
         for (GraphNode node : nodes) {
             potentialSPF = node;
             numSubnets = 0;
@@ -26,6 +25,13 @@ public class GraphSearch {
             }
         }
         return pointsOfFailure;
+    }
+
+    private void deepCopyNodes(List<GraphNode> nodesList) {
+        nodes.clear();
+        for (GraphNode node : nodesList) {
+            nodes.add(new GraphNode(node));
+        }
     }
 
     //remove node by copying the list into a different array, without that one node
