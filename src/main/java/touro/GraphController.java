@@ -22,8 +22,11 @@ public class GraphController {
             HashMap<GraphNode, Integer> spf = graphSearch.getPointsOfFailure(nodeList);
             if (!spf.isEmpty()) {
                 spf.forEach((key, value) -> {
-                    System.out.format("SPF node %s leaves %d subnets%n", key.getName(), value);
+                    System.out.format("\tSPF node %s leaves %d subnets%n", key.getName(), value);
                 });
+            }
+            else {
+                System.out.println("\tNo SPF nodes");
             }
         }
     }

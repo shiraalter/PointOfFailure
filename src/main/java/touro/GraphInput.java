@@ -23,7 +23,9 @@ public class GraphInput {
                     if (!input.contentEquals("0")) {
                         connectNodes(input);
                     } else {
-                        netList.add(new ArrayList<>(nodeList)); //deep copy of nodeList so netList is unaffected by clear()
+                        if (!nodeList.isEmpty()) {
+                            netList.add(new ArrayList<>(nodeList)); //deep copy of nodeList so netList is unaffected by clear()
+                        }
                     }
                 } else {
                     nodeList.clear();
