@@ -12,7 +12,7 @@ public class GraphView extends JComponent {
     private final Color SINGLE_POINT_OF_FAILURE = Color.RED;
     private final Color NODE_TEXT_COLOR = Color.YELLOW;
     private final Color EDGE_COLOR = Color.BLACK;
-    private static final int NODE_SIZE = 30;
+    private static final int NODE_SIZE = 45;
     private static final int HEIGHT = 900;
     private static final int WIDTH = 900;
     private static final int X_CENTER = WIDTH / 2;
@@ -56,7 +56,7 @@ public class GraphView extends JComponent {
             xNode.put(graphNode, x);
             g.fillOval(x, y, NODE_SIZE, NODE_SIZE);
             g.setColor(NODE_TEXT_COLOR);
-            g.drawString(graphNode.getName(), x + 10, y +15);
+            g.drawString(graphNode.getName(), x + 10, y +25);
 
             for(GraphNode connection : graphNode.getConnections()){
                 if(xNode.containsKey(connection)){
