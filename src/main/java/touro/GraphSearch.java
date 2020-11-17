@@ -2,16 +2,17 @@ package touro;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public class GraphSearch {
-    private ArrayList<GraphNode> nodes = new ArrayList<>();
-    private ArrayList<GraphNode> tempNodes = new ArrayList<>();
-    private ArrayList<GraphNode> remainingConnections = new ArrayList<>();
+    private List<GraphNode> nodes = new ArrayList<>();
+    private List<GraphNode> tempNodes = new ArrayList<>();
+    private List<GraphNode> remainingConnections = new ArrayList<>();
     private HashMap<GraphNode, Integer> pointsOfFailure = new HashMap<>();
     private GraphNode potentialSPF;
     private int numSubnets;
 
-    public HashMap<GraphNode, Integer> getPointsOfFailure(ArrayList<GraphNode> nodesList) {
+    public HashMap<GraphNode, Integer> getPointsOfFailure(List<GraphNode> nodesList) {
         nodes.clear();
         nodes = nodesList;
         for (GraphNode node : nodes) {
