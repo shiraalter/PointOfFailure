@@ -43,4 +43,5 @@ public class GraphNode {
         GraphNode graphNode = (GraphNode) o;
         return Objects.equals(name, graphNode.name);
     }
+
 }
