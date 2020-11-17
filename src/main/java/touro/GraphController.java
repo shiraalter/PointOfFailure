@@ -3,20 +3,18 @@ package touro;
 import java.util.HashMap;
 import java.util.List;
 
-public class getSPFs {
+public class GraphController {
     List<List<GraphNode>> netList;
     GraphSearch graphSearch;
-    GraphView view;
     int netNumber = 0;
 
-    public getSPFs(List<List<GraphNode>> netList, GraphSearch graphSearch, GraphView view) {
+    public GraphController(List<List<GraphNode>> netList, GraphSearch graphSearch) {
         this.netList = netList;
         this.graphSearch = graphSearch;
-        this.view = view;
-        printAndPaint();
+        getSPFs();
     }
 
-    private void printAndPaint() {
+    private void getSPFs() {
 
         for (List<GraphNode> nodeList : netList) {
             netNumber++;
@@ -25,7 +23,6 @@ public class getSPFs {
             if (!spf.isEmpty()) {
                 spf.forEach((key, value) -> {
                     System.out.format("SPF node %s leaves %d subnets%n", key.getName(), value);
-                    view.paintSPF(key);
                 });
             }
         }
