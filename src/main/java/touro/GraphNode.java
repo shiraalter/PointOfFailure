@@ -40,7 +40,8 @@ public class GraphNode {
         return Objects.equals(name, graphNode.name);
     }
 
-    public GraphNode getNode() {
-        return this;
+    public String getName() {
+        return name;
     }
+
 }
