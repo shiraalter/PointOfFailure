@@ -15,12 +15,11 @@ public class GraphView extends JComponent {
     private static final int NODE_SIZE = 30;
     private static final int HEIGHT = 900;
     private static final int WIDTH = 900;
-    private int x = -500;
-    private int y = 0;
     private static final int X_CENTER = WIDTH / 2;
     private static final int Y_CENTER = HEIGHT / 2;
     private final GraphSearch graph;
     private final GraphInput nodeList;
+    private int index = 0;
 
 
     public GraphView(GraphSearch graph, GraphInput nodeList){
@@ -35,14 +34,24 @@ public class GraphView extends JComponent {
         paintGraph(g);
     }
 
+    public void setIndex(int index) {
+        this.index = index;
+    }
+
     private void paintGraph(Graphics g){
-        int index = 0;
+        int x = -500;
+        int y = 0;
         List<GraphNode> graphNodes = nodeList.getNetList().get(index);
         HashMap<GraphNode, Integer> spof = graph.getPointsOfFailure(graphNodes);
         HashMap<GraphNode, Integer> xNode = new HashMap<>();
 
         for(GraphNode graphNode : graphNodes){
-            g.setColor(spof.containsKey(graphNode) ? SINGLE_POINT_OF_FAILURE : NODE_COLOR);
+            g.setColor(NODE_COLOR);
+            spof.forEach((key, value) -> {
+                if (graphNode.equals(key)) {
+                    g.setColor(SINGLE_POINT_OF_FAILURE);
+                }
+            });
             x += 100;
             xNode.put(graphNode, x);
             g.fillOval(x, y, NODE_SIZE, NODE_SIZE);
