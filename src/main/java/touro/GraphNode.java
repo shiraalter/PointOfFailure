@@ -20,10 +20,6 @@ public class GraphNode {
         }
     }
 
-    public GraphNode getNode() {
-        return this;
-    }
-
     public String getName() {
         return name;
     }
@@ -47,4 +43,5 @@ public class GraphNode {
         GraphNode graphNode = (GraphNode) o;
         return Objects.equals(name, graphNode.name);
     }
+
 }
