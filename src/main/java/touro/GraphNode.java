@@ -12,6 +12,22 @@ public class GraphNode {
         connections = new ArrayList<>();
     }
 
+    public GraphNode(GraphNode node) {
+        this.name = node.name;
+        this.connections = new ArrayList<>();
+        for (GraphNode connection : node.getConnections()) {
+            this.addConnection(connection);
+        }
+    }
+
+    public GraphNode getNode() {
+        return this;
+    }
+
+    public String getName() {
+        return name;
+    }
+
     public void addConnection(GraphNode node) {
         connections.add(node);
     }
@@ -24,14 +40,6 @@ public class GraphNode {
         return connections;
     }
 
-    public GraphNode(GraphNode node) {
-        this.name = node.name;
-        this.connections = new ArrayList<>();
-        for (GraphNode connection : node.getConnections()) {
-            this.addConnection(connection);
-        }
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -40,8 +48,3 @@ public class GraphNode {
         return Objects.equals(name, graphNode.name);
     }
 
-    public String getName() {
-        return name;
-    }
-
-}
