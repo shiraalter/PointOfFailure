@@ -7,7 +7,7 @@ import java.util.List;
 public class GraphSearch {
     private List<GraphNode> nodes = new ArrayList<>();
     private List<GraphNode> tempNodes = new ArrayList<>();
-    private List<GraphNode> remainingConnections = new ArrayList<>();
+    private List<GraphNode> checkedNodes = new ArrayList<>();
     private HashMap<GraphNode, Integer> pointsOfFailure = new HashMap<>();
     private GraphNode potentialSPF;
     private int numSubnets;
@@ -18,8 +18,8 @@ public class GraphSearch {
         for (GraphNode node : nodes) {
             potentialSPF = node;
             numSubnets = 0;
-            removeNode(node);
-            findSPF(node);
+            removeNode(potentialSPF);
+            findSPF(potentialSPF);
             if (numSubnets != 0) {
                 pointsOfFailure.put(potentialSPF, numSubnets);
             }
@@ -39,23 +39,22 @@ public class GraphSearch {
         tempNodes.clear();
         for (GraphNode node : nodes) {
             if (!node.equals(nodeToRemove)) {
-                GraphNode copiedNode = new GraphNode(node);
-                tempNodes.add(copiedNode);
+                tempNodes.add(new GraphNode(node));
             }
         }
     }
 
     //search for the SPF starting with the first node
     private void findSPF(GraphNode node) {
-        remainingConnections.clear();
+        checkedNodes.clear();
 
         GraphNode startingNode = tempNodes.get(0);
         search(startingNode, node);
 
         //if the two are not equal in size, some nodes could not be reached - there is an SPF
-        if (remainingConnections.size() != tempNodes.size()) {
+        if (checkedNodes.size() != tempNodes.size()) {
             numSubnets++;
-            for (GraphNode connectedNode : remainingConnections) {
+            for (GraphNode connectedNode : checkedNodes) {
                 tempNodes.remove(connectedNode);
             }
             //now use the remaining nodes in temp nodes to find how many more subnets there are
@@ -72,9 +71,9 @@ public class GraphSearch {
 
     //recursive search to find the SPF, if any
     private void search(GraphNode startingNode, GraphNode nodeRemoved) {
-        remainingConnections.add(startingNode);
+        checkedNodes.add(startingNode);
         for (GraphNode child : startingNode.getConnections()) {
-            if (!child.equals(nodeRemoved) && !remainingConnections.contains(child)) {
+            if (!child.equals(nodeRemoved) && !checkedNodes.contains(child)) {
                 search(child, nodeRemoved);
             }
         }
