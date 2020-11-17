@@ -14,6 +14,7 @@ public class GraphSearch {
 
     public HashMap<GraphNode, Integer> getPointsOfFailure(List<GraphNode> nodesList) {
         nodes.clear();
+        pointsOfFailure.clear();
         nodes = nodesList;
         for (GraphNode node : nodes) {
             potentialSPF = node;
